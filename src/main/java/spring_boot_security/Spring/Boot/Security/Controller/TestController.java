@@ -27,4 +27,9 @@ public class TestController {
         System.out.println("User is  "+ user);
         return userService.register(user);
     }
+
+    @PostMapping("/user-login")
+    public String loginUser(@RequestBody Users user){
+        return userService.verify(user);
+    }
 }
