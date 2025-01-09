@@ -25,7 +25,7 @@ public class TestController {
     }
 
     @GetMapping("/manager-role")
-    @PreAuthorize("hasRole('MANAGER', 'ADMIN')")
+    @PreAuthorize("hasRole('MANAGER')")
     public String greetManager(HttpServletRequest request) {
         return "Welcome to the manager role " + request.getSession().getId();
     }
