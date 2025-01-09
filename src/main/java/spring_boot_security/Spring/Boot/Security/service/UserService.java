@@ -23,16 +23,16 @@ public class UserService {
 
     private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    public Users register(Users user){
+    public Users register(Users user) {
         user.setPassword(encoder.encode(user.getPassword()));
-        return  userRepo.save(user);
+        return userRepo.save(user);
     }
 
     public String verify(Users user) {
         Authentication auth = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
-        if(auth.isAuthenticated())
+        if (auth.isAuthenticated())
             return jwtService.generateToken(user.getUsername());
-        return  "Fail";
+        return "Fail";
     }
 }
